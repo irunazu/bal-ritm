@@ -1,0 +1,932 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Баланс и ритм — движение + питание + отдых = здоровье</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=Inter:wght@400;500;600&family=PT+Serif:ital@0;1&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+<header class="header" id="top">
+  <div class="container header__inner">
+    <a href="#home" class="logo">
+      <span class="logo__dot"></span>Баланс<span class="logo__accent">&amp;</span>ритм
+    </a>
+    <nav class="nav" id="nav">
+      <a href="#home" class="nav__link">Мой день</a>
+      <a href="#zozh" class="nav__link">ЗОЖ</a>
+      <a href="#food" class="nav__link">Питание</a>
+      <a href="#calories" class="nav__link">Калории и БЖУ</a>
+      <a href="#movement" class="nav__link">Движение</a>
+      <a href="#recovery" class="nav__link">Восстановление</a>
+      <a href="#diary" class="nav__link">Дневник</a>
+    </nav>
+    <div class="header__actions">
+      <button class="theme-toggle" id="themeToggle" title="Тёмная тема для вечера">🌙</button>
+      <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+    </div>
+  </div>
+</header>
+
+<main>
+
+<!-- ================= HERO ================= -->
+<section class="hero" id="home">
+  <div class="blob blob--green"></div>
+  <div class="blob blob--terra"></div>
+  <div class="container hero__inner">
+    <div class="hero__text">
+      <p class="hero__kicker">🌿 Проект по физкультуре · концепция «Баланс и ритм»</p>
+      <h1 class="hero__title">Движение + питание + отдых <span class="accent">= здоровье</span></h1>
+      <p class="hero__lead">Отдых, медитация и растяжка — не второстепенные разделы, а полноценная часть системы. Здесь нет «всё или ничего». Только маленькие шаги каждый день.</p>
+      <div class="hero__formula">
+        <div class="formula__item formula__item--move"><span>🏃</span>Движение</div>
+        <div class="formula__plus">+</div>
+        <div class="formula__item formula__item--food"><span>🥗</span>Питание</div>
+        <div class="formula__plus">+</div>
+        <div class="formula__item formula__item--rest"><span>🌙</span>Отдых</div>
+        <div class="formula__eq">=</div>
+        <div class="formula__item formula__item--health"><span>💚</span>Здоровье</div>
+      </div>
+      <div class="hero__cta">
+        <a href="#food" class="btn btn--primary">Рассчитать рацион</a>
+        <a href="#movement" class="btn btn--ghost">Начать тренировку</a>
+      </div>
+    </div>
+
+    <!-- МОЙ ДЕНЬ -->
+    <div class="myday">
+      <div class="card myday__card">
+        <div class="myday__head">
+          <h2 class="card__title">Мой день</h2>
+          <span class="chip chip--green" id="dateChip">сегодня</span>
+        </div>
+        <div class="myday__grid">
+          <div class="ring-wrap">
+            <svg class="ring" viewBox="0 0 120 120">
+              <circle class="ring__bg" cx="60" cy="60" r="52"/>
+              <circle class="ring__fg" id="calRing" cx="60" cy="60" r="52"/>
+            </svg>
+            <div class="ring__label">
+              <strong id="calNow">1 250</strong>
+              <span>из <span id="calGoal">2 200</span> ккал</span>
+            </div>
+          </div>
+          <div class="bju">
+            <div class="bju__row">
+              <div class="bju__name"><i class="dot" style="--c:#E76F51"></i>Белки</div>
+              <div class="bju__bar"><div class="bju__fill" style="--c:#E76F51;--w:62%"></div></div>
+              <div class="bju__val">78<span>/130 г</span></div>
+            </div>
+            <div class="bju__row">
+              <div class="bju__name"><i class="dot" style="--c:#F4A261"></i>Жиры</div>
+              <div class="bju__bar"><div class="bju__fill" style="--c:#F4A261;--w:55%"></div></div>
+              <div class="bju__val">38<span>/70 г</span></div>
+            </div>
+            <div class="bju__row">
+              <div class="bju__name"><i class="dot" style="--c:#2A9D8F"></i>Углеводы</div>
+              <div class="bju__bar"><div class="bju__fill" style="--c:#2A9D8F;--w:48%"></div></div>
+              <div class="bju__val">145<span>/300 г</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="widgets">
+          <div class="widget">
+            <div class="widget__icon widget__icon--blue">💧</div>
+            <div class="widget__body">
+              <div class="widget__label">Вода</div>
+              <div class="water-btns">
+                <button class="water-btn" id="waterMinus">−</button>
+                <strong id="waterVal">5</strong><span>/ 8 стаканов</span>
+                <button class="water-btn" id="waterPlus">+</button>
+              </div>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget__icon widget__icon--violet">😴</div>
+            <div class="widget__body">
+              <div class="widget__label">Сон</div>
+              <strong>7 ч 30 мин</strong>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget__icon widget__icon--green">👟</div>
+            <div class="widget__body">
+              <div class="widget__label">Шаги</div>
+              <strong>6 420</strong>
+            </div>
+          </div>
+          <div class="widget">
+            <div class="widget__icon widget__icon--sand">🙂</div>
+            <div class="widget__body">
+              <div class="widget__label">Настроение</div>
+              <div class="mood" id="mood">
+                <button data-mood="1">🙁</button>
+                <button data-mood="2">😐</button>
+                <button data-mood="3" class="active">🙂</button>
+                <button data-mood="4">😄</button>
+                <button data-mood="5">🤩</button>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- МИНИ-КАРТОЧКИ ТАЙМЕРОВ -->
+<section class="section section--tight">
+  <div class="container">
+    <div class="quick-cards">
+      <div class="quick-card quick-card--terra">
+        <div class="quick-card__icon">🤸</div>
+        <div>
+          <h3>Разминка</h3>
+          <p>5 мин перед тренировкой</p>
+          <button class="btn btn--small btn--white timer-start" data-min="5" data-name="Разминка">Старт таймера</button>
+        </div>
+      </div>
+      <div class="quick-card quick-card--blue">
+        <div class="quick-card__icon">🧘</div>
+        <div>
+          <h3>Заминка</h3>
+          <p>5 мин после нагрузки</p>
+          <button class="btn btn--small btn--white timer-start" data-min="5" data-name="Заминка">Старт таймера</button>
+        </div>
+      </div>
+      <div class="quick-card quick-card--violet">
+        <div class="quick-card__icon">🪷</div>
+        <div>
+          <h3>Медитация</h3>
+          <p>10 мин тишины и дыхания</p>
+          <a href="#meditation" class="btn btn--small btn--white">Практика</a>
+        </div>
+      </div>
+      <div class="quick-card quick-card--green">
+        <div class="quick-card__icon">🌿</div>
+        <div>
+          <h3>Растяжка</h3>
+          <p>15 мин на всё тело</p>
+          <a href="#stretch" class="btn btn--small btn--white">Комплекс</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ЗОЖ ================= -->
+<section class="section" id="zozh">
+  <div class="blob blob--sand"></div>
+  <div class="container">
+    <div class="section__head">
+      <span class="kicker">Основа основ</span>
+      <h2>ЗОЖ — это не запреты, а забота</h2>
+      <p class="section__lead">Здоровый образ жизни строится из простых ежедневных решений. Научный подход — простым языком.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card principle">
+        <div class="principle__icon" style="--c:#A9BCD0">🌙</div>
+        <h3>Сон 7–9 часов</h3>
+        <p>Во сне мышцы восстанавливаются, а мозг перерабатывает информацию. Постоянный недосып повышает риск заболеваний сердца и снижает концентрацию.</p>
+      </div>
+      <div class="card principle">
+        <div class="principle__icon" style="--c:#81B29A">💧</div>
+        <h3>Вода — 30 мл на кг</h3>
+        <p>Вода участвует во всех процессах: от терморегуляции до выведения токсинов. Начни день со стакана воды — это будит обмен веществ.</p>
+      </div>
+      <div class="card principle">
+        <div class="principle__icon" style="--c:#E07A5F">🏃</div>
+        <h3>Движение каждый день</h3>
+        <p>ВОЗ рекомендует 150 минут умеренной активности в неделю. Это может быть ходьба, велосипед, плавание — всё, что тебе нравится.</p>
+      </div>
+      <div class="card principle">
+        <div class="principle__icon" style="--c:#F2CC8F">🥗</div>
+        <h3>Рацион без жёстких запретов</h3>
+        <p>Правило тарелки: ½ овощи, ¼ белок, ¼ сложные углеводы. Разрешай себе сладкое иногда — запреты только усиливают тягу.</p>
+      </div>
+      <div class="card principle">
+        <div class="principle__icon" style="--c:#B8A9C9">🧘</div>
+        <h3>Отдых — часть тренировки</h3>
+        <p>Мышцы растут не во время занятия, а во время восстановления. Пропуск дня отдыха — не слабость, а стратегия прогресса.</p>
+      </div>
+      <div class="card principle">
+        <div class="principle__icon" style="--c:#6B8F71">📵</div>
+        <h3>Цифровая гигиена</h3>
+        <p>Час без экранов перед сном улучшает его качество. Замени скроллинг вечерней растяжкой или чтением — увидишь разницу за неделю.</p>
+      </div>
+    </div>
+    <div class="note-banner">
+      <span class="note-banner__icon">💡</span>
+      <p><strong>Помни:</strong> система важнее мотивации. Маленький шаг каждый день побеждает большой рывок раз в месяц.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ПИТАНИЕ ================= -->
+<section class="section section--alt" id="food">
+  <div class="blob blob--green2"></div>
+  <div class="container">
+    <div class="section__head">
+      <span class="kicker kicker--food">Топливо для тела</span>
+      <h2>Правильное питание</h2>
+      <p class="section__lead">Еда — это энергия, а не враг. Посчитай свою норму и подбери блюда под цель.</p>
+    </div>
+
+    <div class="food-layout">
+      <!-- Калькулятор -->
+      <div class="card calc">
+        <h3 class="card__title">Калькулятор калорий и БЖУ</h3>
+        <div class="calc__form">
+          <div class="calc__row">
+            <label>Пол
+              <select id="calcSex">
+                <option value="m">Мужской</option>
+                <option value="f">Женский</option>
+              </select>
+            </label>
+            <label>Возраст
+              <input type="number" id="calcAge" value="19" min="14" max="80">
+            </label>
+          </div>
+          <div class="calc__row">
+            <label>Рост, см
+              <input type="number" id="calcHeight" value="175" min="140" max="220">
+            </label>
+            <label>Вес, кг
+              <input type="number" id="calcWeight" value="65" min="40" max="150">
+            </label>
+          </div>
+          <label>Активность
+            <select id="calcAct">
+              <option value="1.2">Минимальная (учёба, почти без движения)</option>
+              <option value="1.375" selected>Лёгкая (прогулки, 1–2 тренировки)</option>
+              <option value="1.55">Средняя (3–4 тренировки в неделю)</option>
+              <option value="1.7">Высокая (5–6 тренировок)</option>
+            </select>
+          </label>
+          <button class="btn btn--primary btn--full" id="calcBtn">Рассчитать</button>
+        </div>
+        <div class="calc__result" id="calcResult">
+          <div class="calc__main">
+            <span>Твоя норма</span>
+            <strong id="calcKcal">2 315</strong>
+            <span>ккал/день</span>
+          </div>
+          <div class="calc__bju">
+            <div class="calc__bju-item"><i style="--c:#E76F51"></i>Белки <strong id="calcP">130 г</strong></div>
+            <div class="calc__bju-item"><i style="--c:#F4A261"></i>Жиры <strong id="calcF">72 г</strong></div>
+            <div class="calc__bju-item"><i style="--c:#2A9D8F"></i>Углеводы <strong id="calcC">300 г</strong></div>
+          </div>
+          <p class="calc__hint">Формула Миффлина — Сан Жеора. БЖУ: белки 22%, жиры 28%, углеводы 50%.</p>
+        </div>
+      </div>
+
+      <!-- Рецепты -->
+      <div class="recipes">
+        <div class="recipes__filters" id="recipeFilters">
+          <button class="filter-btn active" data-filter="all">Все</button>
+          <button class="filter-btn" data-filter="protein">Белковый</button>
+          <button class="filter-btn" data-filter="light">Лёгкий</button>
+          <button class="filter-btn" data-filter="before">До тренировки</button>
+          <button class="filter-btn" data-filter="after">После тренировки</button>
+        </div>
+        <div class="recipes__grid" id="recipesGrid">
+          <div class="card recipe" data-tags="protein after">
+            <div class="recipe__emoji">🍳</div>
+            <h4>Белковый омлет</h4>
+            <p>3 яйца, молоко, шпинат, помидоры. 25 г белка на порцию.</p>
+            <div class="recipe__meta"><span>🔥 320 ккал</span><span>⏱ 10 мин</span></div>
+          </div>
+          <div class="card recipe" data-tags="light before">
+            <div class="recipe__emoji">🥤</div>
+            <h4>Смузи «Заряд»</h4>
+            <p>Банан, овсянка, молоко, арахисовая паста. Энергия перед залом.</p>
+            <div class="recipe__meta"><span>🔥 280 ккал</span><span>⏱ 5 мин</span></div>
+          </div>
+          <div class="card recipe" data-tags="protein after">
+            <div class="recipe__emoji">🍗</div>
+            <h4>Курица с гречкой</h4>
+            <p>Грудка, гречка, огурец и зелень. Классика восстановления.</p>
+            <div class="recipe__meta"><span>🔥 450 ккал</span><span>⏱ 25 мин</span></div>
+          </div>
+          <div class="card recipe" data-tags="light protein">
+            <div class="recipe__emoji">🫐</div>
+            <h4>Творог с ягодами</h4>
+            <p>5% творог, чёрная смородина, мёд. Идеальный перекус.</p>
+            <div class="recipe__meta"><span>🔥 240 ккал</span><span>⏱ 3 мин</span></div>
+          </div>
+          <div class="card recipe" data-tags="before">
+            <div class="recipe__emoji">🥞</div>
+            <h4>Банановые панкейки</h4>
+            <p>Банан, яйца, овсяная мука. Медленные углеводы на 2 часа.</p>
+            <div class="recipe__meta"><span>🔥 350 ккал</span><span>⏱ 15 мин</span></div>
+          </div>
+          <div class="card recipe" data-tags="light">
+            <div class="recipe__emoji">🥗</div>
+            <h4>Салат «Свежесть»</h4>
+            <p>Авокадо, курица, микс зелени, оливковое масло, лимон.</p>
+            <div class="recipe__meta"><span>🔥 310 ккал</span><span>⏱ 12 мин</span></div>
+          </div>
+        </div>
+        <div class="note-banner note-banner--food">
+          <span class="note-banner__icon">🍽</span>
+          <p><strong>Дневник питания:</strong> записывай, что ешь, 3–5 дней — сразу увидишь закономерности. Важна не одна порция, а среднее за неделю.</p>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= КАЛОРИИ ================= -->
+<section class="section" id="calories">
+  <div class="container">
+    <div class="section__head">
+      <span class="kicker">Энергия в цифрах</span>
+      <h2>Калории и БЖУ простым языком</h2>
+      <p class="section__lead">Калория — единица энергии. Не «плохая» и не «хорошая», просто топливо. Важен баланс.</p>
+    </div>
+    <div class="grid grid--3">
+      <div class="card macro macro--protein">
+        <div class="macro__icon">🥩</div>
+        <h3>Белки — 4 ккал/г</h3>
+        <p>Строительный материал мышц, кожи, ферментов и гормонов. Недобор — потеря мышц, переизбыток — нагрузка на почки.</p>
+        <div class="macro__norm">Норма: 1,2–2 г на кг веса</div>
+      </div>
+      <div class="card macro macro--fat">
+        <div class="macro__icon">🥑</div>
+        <h3>Жиры — 9 ккал/г</h3>
+        <p>Гормоны, усвоение витаминов A, D, E, K, работа мозга. Выбирай ненасыщенные: рыба, орехи, оливковое масло.</p>
+        <div class="macro__norm">Норма: 1–1,5 г на кг веса</div>
+      </div>
+      <div class="card macro macro--carb">
+        <div class="macro__icon">🌾</div>
+        <h3>Углеводы — 4 ккал/г</h3>
+        <p>Главный источник энергии для мозга и мышц. Отдавай предпочтение сложным: крупы, овощи, цельнозерновой хлеб.</p>
+        <div class="macro__norm">Норма: 3–5 г на кг веса</div>
+      </div>
+    </div>
+    <div class="card table-card">
+      <h3 class="card__title">Калорийность популярных продуктов <span class="chip chip--sand">на 100 г</span></h3>
+      <div class="table-wrap">
+        <table class="table">
+          <thead>
+            <tr><th>Продукт</th><th>Ккал</th><th>Белки</th><th>Жиры</th><th>Углеводы</th></tr>
+          </thead>
+          <tbody>
+            <tr><td>Куриная грудка</td><td>113</td><td>23.6</td><td>1.9</td><td>0.4</td></tr>
+            <tr><td>Гречка отварная</td><td>110</td><td>4.2</td><td>1.6</td><td>21.3</td></tr>
+            <tr><td>Овсянка на молоке</td><td>102</td><td>3.2</td><td>4.1</td><td>14.2</td></tr>
+            <tr><td>Творог 5%</td><td>120</td><td>17.2</td><td>5.0</td><td>1.8</td></tr>
+            <tr><td>Яйцо варёное</td><td>155</td><td>12.6</td><td>11.0</td><td>1.1</td></tr>
+            <tr><td>Банан</td><td>89</td><td>1.1</td><td>0.3</td><td>22.8</td></tr>
+            <tr><td>Яблоко</td><td>52</td><td>0.3</td><td>0.2</td><td>13.8</td></tr>
+            <tr><td>Говядина постная</td><td>152</td><td>22.2</td><td>6.5</td><td>0.0</td></tr>
+            <tr><td>Рис белый отварной</td><td>130</td><td>2.7</td><td>0.3</td><td>28.2</td></tr>
+            <tr><td>Миндаль</td><td>579</td><td>21.2</td><td>49.9</td><td>21.6</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ДВИЖЕНИЕ ================= -->
+<section class="section section--alt" id="movement">
+  <div class="blob blob--terra2"></div>
+  <div class="container">
+    <div class="section__head">
+      <span class="kicker kicker--move">Тело в движении</span>
+      <h2>Упражнения и тренировки</h2>
+      <p class="section__lead">Главное правило: разминка идёт <strong>перед</strong>, заминка — <strong>после</strong>. Это не опция, а обязательная часть каждой тренировки.</p>
+    </div>
+
+    <div class="warmcool">
+      <div class="card warmcool__card warmcool__card--warm">
+        <div class="warmcool__head">🔥 Разминка — готовим тело к нагрузке</div>
+        <ul class="warmcool__list">
+          <li><strong>2 мин</strong> — ходьба на месте, лёгкий бег</li>
+          <li><strong>1 мин</strong> — вращения руками, шеей, тазом</li>
+          <li><strong>1 мин</strong> — наклоны и пружинка в полуприседе</li>
+          <li><strong>1 мин</strong> — динамическая растяжка: выпады, «кошка-корова»</li>
+        </ul>
+        <button class="btn btn--primary timer-start" data-min="5" data-name="Разминка">Таймер 5:00</button>
+      </div>
+      <div class="card warmcool__card warmcool__card--cool">
+        <div class="warmcool__head">🌊 Заминка — возвращаем пульс в норму</div>
+        <ul class="warmcool__list">
+          <li><strong>2 мин</strong> — медленная ходьба, глубокое дыхание</li>
+          <li><strong>2 мин</strong> — статическая растяжка крупных мышц</li>
+          <li><strong>1 мин</strong> — дыхание «4–6»: вдох 4 сек, выдох 6 сек</li>
+        </ul>
+        <button class="btn btn--calm timer-start" data-min="5" data-name="Заминка">Таймер 5:00</button>
+      </div>
+    </div>
+
+    <div class="ex-filters" id="exFilters">
+      <select id="fLevel">
+        <option value="all">Любой уровень</option>
+        <option value="easy">Новичок</option>
+        <option value="mid">Средний</option>
+        <option value="hard">Продвинутый</option>
+      </select>
+      <select id="fGoal">
+        <option value="all">Любая цель</option>
+        <option value="legs">Ноги</option>
+        <option value="arms">Руки и плечи</option>
+        <option value="core">Пресс и спина</option>
+        <option value="allbody">Всё тело</option>
+        <option value="cardio">Кардио</option>
+      </select>
+      <select id="fEquip">
+        <option value="all">Любой инвентарь</option>
+        <option value="none">Без инвентаря</option>
+        <option value="rope">Скакалка</option>
+        <option value="dumb">Гантели</option>
+        <option value="mat">Коврик</option>
+      </select>
+    </div>
+    <p class="ex-count" id="exCount">Найдено: 8</p>
+
+    <div class="grid grid--4" id="exGrid">
+      <div class="card ex" data-level="easy" data-goal="legs" data-equip="none">
+        <div class="ex__emoji">🏋️</div><h4>Приседания</h4>
+        <p>3×12–15. Спина ровная, колени не заходят за носки.</p>
+        <div class="ex__tags"><span class="chip chip--green">Новичок</span><span class="chip chip--sand">Ноги</span></div>
+      </div>
+      <div class="card ex" data-level="mid" data-goal="arms" data-equip="none">
+        <div class="ex__emoji">💪</div><h4>Отжимания</h4>
+        <p>3×8–12. Тело — прямая линия, можно с колен.</p>
+        <div class="ex__tags"><span class="chip chip--sand">Средний</span><span class="chip chip--blue">Руки</span></div>
+      </div>
+      <div class="card ex" data-level="mid" data-goal="core" data-equip="mat">
+        <div class="ex__emoji">🧱</div><h4>Планка</h4>
+        <p>3×30–60 сек. Пресс напряжён, таз не провисает.</p>
+        <div class="ex__tags"><span class="chip chip--sand">Средний</span><span class="chip chip--violet">Пресс</span></div>
+      </div>
+      <div class="card ex" data-level="easy" data-goal="legs" data-equip="none">
+        <div class="ex__emoji">🦵</div><h4>Выпады</h4>
+        <p>3×10 на каждую ногу. Колено под углом 90°.</p>
+        <div class="ex__tags"><span class="chip chip--green">Новичок</span><span class="chip chip--sand">Ноги</span></div>
+      </div>
+      <div class="card ex" data-level="hard" data-goal="allbody cardio" data-equip="none">
+        <div class="ex__emoji">⚡</div><h4>Берпи</h4>
+        <p>4×8–10. Взрывная классика на всё тело.</p>
+        <div class="ex__tags"><span class="chip chip--terra">Продвинутый</span><span class="chip chip--blue">Кардио</span></div>
+      </div>
+      <div class="card ex" data-level="easy" data-goal="cardio" data-equip="rope">
+        <div class="ex__emoji">🪢</div><h4>Скакалка</h4>
+        <p>5×2 мин. Лучшая тренировка сердца и координации.</p>
+        <div class="ex__tags"><span class="chip chip--green">Новичок</span><span class="chip chip--blue">Кардио</span></div>
+      </div>
+      <div class="card ex" data-level="easy" data-goal="legs core" data-equip="mat">
+        <div class="ex__emoji">🌉</div><h4>Ягодичный мост</h4>
+        <p>3×15. Вверх — выдох, вверху задержка 2 сек.</p>
+        <div class="ex__tags"><span class="chip chip--green">Новичок</span><span class="chip chip--sand">Ноги</span></div>
+      </div>
+      <div class="card ex" data-level="mid" data-goal="core arms" data-equip="dumb">
+        <div class="ex__emoji">🏋️‍♀️</div><h4>Тяга в наклоне</h4>
+        <p>3×12. Спина ровная, локти тянем назад.</p>
+        <div class="ex__tags"><span class="chip chip--sand">Средний</span><span class="chip chip--violet">Спина</span></div>
+      </div>
+    </div>
+
+    <div class="note-banner note-banner--move">
+      <span class="note-banner__icon">💚</span>
+      <p><strong>Отдых — часть тренировки.</strong> Без восстановления нет прогресса: мышечные волокна микроскопически повреждаются нагрузкой и «починяются» крепче во время отдыха. Тренируй одну группу мышц не чаще, чем раз в 48 часов.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ВОССТАНОВЛЕНИЕ ================= -->
+<section class="section" id="recovery">
+  <div class="blob blob--blue"></div>
+  <div class="container">
+    <div class="section__head">
+      <span class="kicker kicker--rest">Мягкость и тишина</span>
+      <h2>Восстановление: отдых, медитация, растяжка</h2>
+      <p class="section__lead">Здесь ничего «на потом». Восстановление — полноценная треть системы здоровья.</p>
+    </div>
+
+    <div class="grid grid--3">
+      <div class="card rest-card">
+        <div class="rest-card__icon" style="--c:#A9BCD0">😴</div>
+        <h3>Сон — главный «допинг»</h3>
+        <p>Во сне выделяется гормон роста, восстанавливаются мышцы и нервная система. При сне меньше 6 часов снижаются сила, концентрация и иммунитет.</p>
+        <ul class="check-list">
+          <li>Ложись в одно и то же время</li>
+          <li>За час до сна — без экранов</li>
+          <li>Спальня прохладная и тёмная</li>
+        </ul>
+      </div>
+      <div class="card rest-card">
+        <div class="rest-card__icon" style="--c:#6B8F71">📅</div>
+        <h3>Дни отдыха</h3>
+        <p>Между силовыми тренировками — минимум 1 день. Раз в 4–8 недель полезна разгрузочная неделя с лёгкой нагрузкой.</p>
+        <ul class="check-list">
+          <li>1–2 дня отдыха в неделю — норма</li>
+          <li>В день отдыха — прогулка и растяжка</li>
+          <li>Слушай тело, а не график</li>
+        </ul>
+      </div>
+      <div class="card rest-card">
+        <div class="rest-card__icon" style="--c:#E07A5F">⚠️</div>
+        <h3>Сигналы перетренированности</h3>
+        <p>Тело предупреждает раньше, чем ломается. Заметил несколько признаков — сделай паузу.</p>
+        <ul class="check-list check-list--warn">
+          <li>Постоянная усталость и раздражительность</li>
+          <li>Сон стал хуже, аппетит упал</li>
+          <li>Пульс в покое выше обычного на 5–10 уд/мин</li>
+          <li>Тренировки даются тяжелее неделю подряд</li>
+        </ul>
+      </div>
+    </div>
+
+    <!-- Шкала восстановления -->
+    <div class="card recovery-scale">
+      <h3 class="card__title">Шкала восстановления</h3>
+      <p>Честно оцени сон, мышечную боль и настроение за последние 2–3 дня.</p>
+      <div class="scale">
+        <button class="scale__btn" data-v="1">1<br><small>всё болит</small></button>
+        <button class="scale__btn" data-v="2">2<br><small>тяжело</small></button>
+        <button class="scale__btn" data-v="3">3<br><small>норма</small></button>
+        <button class="scale__btn" data-v="4">4<br><small>хорошо</small></button>
+        <button class="scale__btn" data-v="5">5<br><small>бодрость</small></button>
+      </div>
+      <div class="scale__verdict" id="scaleVerdict">Выбери значение — подскажем план на день 👇</div>
+    </div>
+
+    <!-- Медитация -->
+    <div class="meditation" id="meditation">
+      <div class="card meditation__card">
+        <div class="meditation__text">
+          <span class="kicker kicker--rest">Практика дня</span>
+          <h3>Дыхательная медитация</h3>
+          <p class="serif">«Вдох — наполняюсь спокойствием, выдох — отпускаю напряжение»</p>
+          <p>Дыхание 4–6 снижает частоту сердечных сокращений и уровень стресса. Достаточно 5–10 минут. Это работает: так дышат в протоколах для снижения тревожности.</p>
+          <div class="med-btns">
+            <button class="btn btn--calm" id="breathStart">Начать дыхание</button>
+            <span class="med__count" id="breathCount"></span>
+          </div>
+        </div>
+        <div class="breath" id="breathCircle">
+          <div class="breath__inner">
+            <span id="breathPhase">готов?</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Растяжка -->
+    <div class="stretch" id="stretch">
+      <div class="section__head">
+        <h2>Растяжка — комплексы</h2>
+        <p class="section__lead">Только на разогретые мышцы, без боли, 30–60 секунд на позу. Дыши спокойно.</p>
+      </div>
+      <div class="grid grid--4">
+        <div class="card stretch-card">
+          <div class="stretch-card__emoji">🧍</div>
+          <h4>На всё тело</h4>
+          <p>15 мин · 8 поз. Идеально после тренировки или вечером.</p>
+          <div class="stretch-card__tags"><span class="chip chip--violet">Универсал</span></div>
+        </div>
+        <div class="card stretch-card">
+          <div class="stretch-card__emoji">🤸‍♀️</div>
+          <h4>На шпагат</h4>
+          <p>20 мин · 3 раза в неделю. Постепенно, без рывков — берцовая кость не прощает спешки.</p>
+          <div class="stretch-card__tags"><span class="chip chip--terra">Цель</span></div>
+        </div>
+        <div class="card stretch-card">
+          <div class="stretch-card__emoji">🙆</div>
+          <h4>На спину и плечи</h4>
+          <p>10 мин · спасение после дня за партой. «Кошка-корова», поза ребёнка, скрутки.</p>
+          <div class="stretch-card__tags"><span class="chip chip--blue">Студенту</span></div>
+        </div>
+        <div class="card stretch-card">
+          <div class="stretch-card__emoji">🌙</div>
+          <h4>На расслабление</h4>
+          <p>10 мин · перед сном. Ноги на стену, мягкие наклоны, дыхание 4–6.</p>
+          <div class="stretch-card__tags"><span class="chip chip--violet">Вечер</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ================= ДНЕВНИК ================= -->
+<section class="section section--alt" id="diary">
+  <div class="container">
+    <div class="section__head">
+      <span class="kicker kicker--food">Маленькие шаги</span>
+      <h2>Дневник привычек</h2>
+      <p class="section__lead">Отмечай выполненное — прогресс сохраняется в браузере. Не забывай: пропустить день — нормально, важно вернуться.</p>
+    </div>
+    <div class="card diary-card">
+      <div class="habits" id="habits">
+        <div class="habits__row habits__row--head">
+          <div class="habits__name">Привычка</div>
+          <div class="habits__days"><span>Пн</span><span>Вт</span><span>Ср</span><span>Чт</span><span>Пт</span><span>Сб</span><span>Вс</span></div>
+        </div>
+        <div class="habits__row" data-habit="water">
+          <div class="habits__name">💧 Выпил 8 стаканов воды</div>
+          <div class="habits__days"><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div>
+        </div>
+        <div class="habits__row" data-habit="train">
+          <div class="habits__name">🏃 Тренировка / 8к шагов</div>
+          <div class="habits__days"><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div>
+        </div>
+        <div class="habits__row" data-habit="warmup">
+          <div class="habits__name">🔥 Разминка и заминка</div>
+          <div class="habits__days"><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div>
+        </div>
+        <div class="habits__row" data-habit="stretch">
+          <div class="habits__name">🌿 Растяжка</div>
+          <div class="habits__days"><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div>
+        </div>
+        <div class="habits__row" data-habit="meditation">
+          <div class="habits__name">🪷 Медитация 10 мин</div>
+          <div class="habits__days"><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div>
+        </div>
+        <div class="habits__row" data-habit="sleep">
+          <div class="habits__name">🌙 Сон до 23:30</div>
+          <div class="habits__days"><button></button><button></button><button></button><button></button><button></button><button></button><button></button></div>
+        </div>
+      </div>
+      <div class="diary__side">
+        <div class="progress-box">
+          <h4>Неделя: <span id="weekScore">0%</span></h4>
+          <div class="progress"><div class="progress__fill" id="weekBar"></div></div>
+          <p class="diary__motivation" id="motivation">Начни с одной привычки — любой.</p>
+        </div>
+        <label class="notes-label">Заметки о самочувствии
+          <textarea id="notes" rows="4" placeholder="Как прошла тренировка? Что чувствуешь? Что удалось?"></textarea>
+        </label>
+        <button class="btn btn--ghost btn--full" id="clearHabits">Сбросить неделю</button>
+      </div>
+    </div>
+  </div>
+</section>
+
+</main>
+
+<footer class="footer">
+  <div class="container footer__inner">
+    <div>
+      <a href="#top" class="logo logo--footer"><span class="logo__dot"></span>Баланс<span class="logo__accent">&amp;</span>ритм</a>
+      <p class="footer__text">Проект по физической культуре · движение + питание + отдых = здоровье</p>
+    </div>
+    <div class="footer__reminders">
+      <p>🔔 Пей воду · 🕐 Делай перерывы · 🌙 Ложись спать вовремя</p>
+    </div>
+  </div>
+</footer>
+
+<!-- Таймер-модалка -->
+<div class="modal" id="timerModal">
+  <div class="modal__box">
+    <h3 id="timerName">Разминка</h3>
+    <div class="modal__time" id="timerDisplay">05:00</div>
+    <div class="modal__btns">
+      <button class="btn btn--primary" id="timerToggle">Старт</button>
+      <button class="btn btn--ghost" id="timerClose">Закрыть</button>
+    </div>
+  </div>
+</div>
+
+<script>
+/* ===== Тёмная тема ===== */
+const themeToggle = document.getElementById('themeToggle');
+themeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  themeToggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+});
+
+/* ===== Бургер ===== */
+document.getElementById('burger').addEventListener('click', () => {
+  document.getElementById('nav').classList.toggle('open');
+});
+document.querySelectorAll('.nav__link').forEach(l => l.addEventListener('click', () => {
+  document.getElementById('nav').classList.remove('open');
+}));
+
+/* ===== Дата ===== */
+document.getElementById('dateChip').textContent =
+  new Date().toLocaleDateString('ru-RU', { weekday: 'long', day: 'numeric', month: 'long' });
+
+/* ===== Кольцо калорий ===== */
+const ring = document.getElementById('calRing');
+const C = 2 * Math.PI * 52;
+ring.style.strokeDasharray = C;
+function setRing(now, goal) {
+  const p = Math.min(now / goal, 1);
+  ring.style.strokeDashoffset = C * (1 - p);
+  document.getElementById('calNow').textContent = now.toLocaleString('ru-RU');
+}
+setRing(1250, 2200);
+ring.style.transition = 'stroke-dashoffset 1.5s ease';
+
+/* ===== Вода ===== */
+let water = 5;
+const waterVal = document.getElementById('waterVal');
+document.getElementById('waterPlus').onclick = () => { if (water < 12) water++; waterVal.textContent = water; };
+document.getElementById('waterMinus').onclick = () => { if (water > 0) water--; waterVal.textContent = water; };
+
+/* ===== Настроение ===== */
+document.querySelectorAll('#mood button').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('#mood button').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+}));
+
+/* ===== Калькулятор ===== */
+document.getElementById('calcBtn').addEventListener('click', () => {
+  const sex = document.getElementById('calcSex').value;
+  const age = +document.getElementById('calcAge').value;
+  const h = +document.getElementById('calcHeight').value;
+  const w = +document.getElementById('calcWeight').value;
+  const act = +document.getElementById('calcAct').value;
+  if (!age || !h || !w) return alert('Заполни все поля');
+  const bmr = 10 * w + 6.25 * h - 5 * age + (sex === 'm' ? 5 : -161);
+  const kcal = Math.round(bmr * act);
+  const p = Math.round(kcal * 0.22 / 4);
+  const f = Math.round(kcal * 0.28 / 9);
+  const c = Math.round(kcal * 0.50 / 4);
+  document.getElementById('calcKcal').textContent = kcal.toLocaleString('ru-RU');
+  document.getElementById('calcP').textContent = p + ' г';
+  document.getElementById('calcF').textContent = f + ' г';
+  document.getElementById('calcC').textContent = c + ' г';
+  setRing(Math.min(1250, kcal), kcal);
+  document.getElementById('calGoal').textContent = kcal.toLocaleString('ru-RU');
+});
+
+/* ===== Фильтр рецептов ===== */
+document.querySelectorAll('#recipeFilters .filter-btn').forEach(btn => {
+  btn.addEventListener('click', () => {
+    document.querySelectorAll('#recipeFilters .filter-btn').forEach(b => b.classList.remove('active'));
+    btn.classList.add('active');
+    const f = btn.dataset.filter;
+    document.querySelectorAll('.recipe').forEach(r => {
+      r.style.display = (f === 'all' || r.dataset.tags.includes(f)) ? '' : 'none';
+    });
+  });
+});
+
+/* ===== Фильтр упражнений ===== */
+function filterEx() {
+  const lv = document.getElementById('fLevel').value;
+  const gl = document.getElementById('fGoal').value;
+  const eq = document.getElementById('fEquip').value;
+  let n = 0;
+  document.querySelectorAll('.ex').forEach(e => {
+    const ok = (lv === 'all' || e.dataset.level === lv) &&
+               (gl === 'all' || e.dataset.goal.includes(gl)) &&
+               (eq === 'all' || e.dataset.equip === eq);
+    e.style.display = ok ? '' : 'none';
+    if (ok) n++;
+  });
+  document.getElementById('exCount').textContent = 'Найдено: ' + n;
+}
+['fLevel','fGoal','fEquip'].forEach(id => document.getElementById(id).addEventListener('change', filterEx));
+
+/* ===== Таймер-модалка ===== */
+const modal = document.getElementById('timerModal');
+const tDisp = document.getElementById('timerDisplay');
+const tToggle = document.getElementById('timerToggle');
+let tTotal = 300, tLeft = 300, tInt = null, tRunning = false;
+
+function tRender() {
+  const m = String(Math.floor(tLeft / 60)).padStart(2, '0');
+  const s = String(tLeft % 60).padStart(2, '0');
+  tDisp.textContent = m + ':' + s;
+  if (tLeft <= 0) {
+    clearInterval(tInt); tRunning = false;
+    tToggle.textContent = 'Старт';
+    tDisp.textContent = 'Готово! 💚';
+  }
+}
+document.querySelectorAll('.timer-start').forEach(b => b.addEventListener('click', () => {
+  clearInterval(tInt); tRunning = false;
+  tTotal = tLeft = (+b.dataset.min) * 60;
+  document.getElementById('timerName').textContent = b.dataset.name;
+  tToggle.textContent = 'Старт';
+  tRender();
+  modal.classList.add('open');
+}));
+tToggle.addEventListener('click', () => {
+  if (tLeft <= 0) { tLeft = tTotal; tRender(); }
+  tRunning = !tRunning;
+  tToggle.textContent = tRunning ? 'Пауза' : 'Старт';
+  if (tRunning) {
+    tInt = setInterval(() => { tLeft--; tRender(); }, 1000);
+  } else clearInterval(tInt);
+});
+document.getElementById('timerClose').addEventListener('click', () => {
+  clearInterval(tInt); tRunning = false; modal.classList.remove('open');
+});
+
+/* ===== Дыхательная практика ===== */
+const breath = document.getElementById('breathCircle');
+const phase = document.getElementById('breathPhase');
+const bStart = document.getElementById('breathStart');
+const bCount = document.getElementById('breathCount');
+let bTimer = null, bCycles = 0;
+const PHRASES = ['вдох…', 'задержка', 'выдох…', 'пауза'];
+
+function setPhase(txt, scale, dur) {
+  phase.textContent = txt;
+  breath.style.transitionDuration = dur + 's';
+  breath.style.setProperty('--scale', scale);
+}
+bStart.addEventListener('click', () => {
+  if (bTimer) {
+    clearInterval(bTimer); bTimer = null;
+    bStart.textContent = 'Начать дыхание';
+    phase.textContent = 'готов?';
+    breath.style.setProperty('--scale', 1);
+    return;
+  }
+  bCycles = 0;
+  bStart.textContent = 'Остановить';
+  let step = 0;
+  const run = () => {
+    if (step % 4 === 0) { setPhase('вдох…', 1.35, 4); setTimeout(() => {}, 0); }
+    if (step % 4 === 1) { setPhase('задержка', 1.35, 0.5); }
+    if (step % 4 === 2) { setPhase('выдох…', 1, 6); bCycles++; bCount.textContent = 'циклов: ' + bCycles; }
+    if (step % 4 === 3) { setPhase('пауза', 1, 0.5); }
+    step++;
+  };
+  run();
+  bTimer = setInterval(run, 4000); // вдох 4с, далее фазы визуальные
+});
+</script>
+
+<script>
+/* ===== Шкала восстановления ===== */
+const VERDICTS = {
+  1: '🔴 Сегодня только отдых: прогулка, растяжка, сон раньше обычного. Тело просит паузу — это нормально.',
+  2: '🟠 Лёгкая активность: прогулка 30 мин + растяжка. Без интенсивных тренировок.',
+  3: '🟡 Можно тренироваться в обычном темпе, но разминку не пропускай.',
+  4: '🟢 Отличный день для тренировки. Добавь 10% к привычной нагрузке, если хочется.',
+  5: '🔵 Полёт нормальный! Но не переусердствуй — великие результаты строятся годами.'
+};
+document.querySelectorAll('.scale__btn').forEach(b => b.addEventListener('click', () => {
+  document.querySelectorAll('.scale__btn').forEach(x => x.classList.remove('active'));
+  b.classList.add('active');
+  document.getElementById('scaleVerdict').textContent = VERDICTS[b.dataset.v];
+}));
+
+/* ===== Дневник привычек ===== */
+const HABITS_KEY = 'balance_habits_v1';
+const NOTES_KEY = 'balance_notes_v1';
+function loadHabits() {
+  try { return JSON.parse(localStorage.getItem(HABITS_KEY)) || {}; } catch { return {}; }
+}
+function saveHabits(d) { localStorage.setItem(HABITS_KEY, JSON.stringify(d)); }
+function renderHabits() {
+  const data = loadHabits();
+  let total = 0, done = 0;
+  document.querySelectorAll('.habits__row[data-habit]').forEach(row => {
+    const key = row.dataset.habit;
+    const state = data[key] || [];
+    row.querySelectorAll('.habits__days button').forEach((btn, i) => {
+      btn.classList.toggle('done', !!state[i]);
+      btn.onclick = () => {
+        const d = loadHabits();
+        d[key] = d[key] || [];
+        d[key][i] = !d[key][i];
+        saveHabits(d); renderHabits();
+      };
+    });
+    total += 7; done += state.filter(Boolean).length;
+  });
+  const pct = total ? Math.round(done / total * 100) : 0;
+  document.getElementById('weekScore').textContent = pct + '%';
+  document.getElementById('weekBar').style.width = pct + '%';
+  const mot = document.getElementById('motivation');
+  if (pct === 0) mot.textContent = 'Начни с одной привычки — любой.';
+  else if (pct < 30) mot.textContent = 'Отличное начало! Продолжай в том же ритме.';
+  else if (pct < 60) mot.textContent = 'Уже треть недели! Ты молодец. 💪';
+  else if (pct < 90) mot.textContent = 'Мощный ритм! Тело говорит тебе спасибо.';
+  else mot.textContent = 'Неделя пройдена идеально. Вознагради себя отдыхом! 🎉';
+}
+document.getElementById('clearHabits').addEventListener('click', () => {
+  if (confirm('Сбросить все отметки за неделю?')) { localStorage.removeItem(HABITS_KEY); renderHabits(); }
+});
+renderHabits();
+
+/* ===== Заметки ===== */
+const notes = document.getElementById('notes');
+notes.value = localStorage.getItem(NOTES_KEY) || '';
+notes.addEventListener('input', () => localStorage.setItem(NOTES_KEY, notes.value));
+
+/* ===== Плавные якоря ===== */
+document.querySelectorAll('a[href^="#"]').forEach(a => a.addEventListener('click', e => {
+  const t = document.querySelector(a.getAttribute('href'));
+  if (t) { e.preventDefault(); t.scrollIntoView({ behavior: 'smooth' }); }
+}));
+</script>
+
+</body>
+</html>
